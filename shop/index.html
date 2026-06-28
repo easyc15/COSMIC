@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Shop Template</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="header">
+        <div class="container nav-container">
+            <div class="brand"><img id="brand-logo" src="" alt="Logo" style="display:none; max-height: 50px; margin-right: 10px;"><h1 id="brand-name">Business Name</h1></div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#services">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container hero-content">
+                <h2 id="hero-title">Welcome to our Shop</h2>
+                <p id="hero-subtitle">Discover amazing products today.</p>
+                <a href="#services" class="btn">Shop Now</a>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="section-title">Featured Products</h2>
+                <div id="services-list" class="grid-container">
+                    <!-- Products injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">About Us</h2>
+                <p id="about-text">About us description goes here.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Customer Service</h3>
+                        <p id="contact-address">Address</p>
+                        <p id="contact-phone">Phone</p>
+                        <p id="contact-email">Email</p>
+                    </div>
+                    <form id="contact-form" class="contact-form">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="How can we help you?" rows="5" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="maps" class="maps">
+            <div class="container">
+                <h2 class="section-title">Store Location</h2>
+                <div id="map-container" class="map-container">
+                    <!-- Map iframe injected by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> <span id="footer-brand">Business Name</span>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a id="whatsapp-btn" href="#" target="_blank" class="whatsapp-btn">
+        <svg viewBox="0 0 32 32" width="32" height="32">
+            <path fill="white" d="M16 2.016C8.262 2.016 1.984 8.293 1.984 16.031c0 2.455.632 4.846 1.834 6.953L2 30.016l7.184-1.883c2.062 1.096 4.387 1.674 6.816 1.674 7.738 0 14.016-6.277 14.016-14.015S23.738 2.016 16 2.016zm0 23.473c-2.074 0-4.105-.558-5.882-1.613l-.422-.25-4.373 1.147 1.168-4.263-.274-.436c-1.16-1.848-1.772-3.98-1.772-6.189 0-6.402 5.207-11.609 11.61-11.609 6.401 0 11.608 5.207 11.608 11.61s-5.207 11.603-11.663 11.603zM22.38 18.7c-.349-.174-2.066-1.02-2.386-1.137-.32-.116-.554-.174-.788.174-.233.349-.9 1.137-1.102 1.37-.204.233-.408.262-.757.087-1.428-.705-2.585-1.522-3.565-2.735-.257-.318.252-.296.936-1.661.116-.233.058-.437-.03-.611-.087-.174-.788-1.9-1.079-2.602-.284-.683-.574-.59-.788-.6-.204-.01-.437-.01-.67-.01-.233 0-.612.087-.932.436-.32.349-1.223 1.194-1.223 2.91 0 1.716 1.252 3.374 1.427 3.606.175.233 2.454 3.743 5.942 5.247 2.308.995 3.238.835 4.103.746 1.002-.104 2.066-.844 2.357-1.66.291-.816.291-1.514.204-1.66-.087-.146-.32-.233-.67-.408z"/>
+        </svg>
+    </a>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
