@@ -7,83 +7,146 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Page Loader -->
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navbar -->
     <header id="header">
         <div class="container nav-container">
-            <div class="brand"><img id="brand-logo" src="" alt="Logo" style="display:none; max-height: 50px; margin-right: 10px;"><h1 id="brand-name">Business Name</h1></div>
-            <nav>
+            <div class="brand">
+                <img id="brand-logo" src="" alt="Logo" style="display:none; max-height: 40px; margin-right: 15px;">
+                <h1 id="brand-name">Brand</h1>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="#hero">Home</a></li>
-                    <li><a href="#services">Menu</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about">Story</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#reservations">Reservations</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <section id="hero" class="hero">
-            <div class="container hero-content">
-                <h2 id="hero-title">Welcome to our Restaurant</h2>
+        <!-- Hero Section with Parallax -->
+        <section id="hero" class="hero parallax">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content reveal">
+                <h2 id="hero-title" class="typewriter-container"><span id="typewriter"></span><span class="cursor">|</span></h2>
                 <p id="hero-subtitle">Taste the best food in town.</p>
-                <a href="#contact" class="btn">Reserve a Table</a>
+                <a href="#reservations" class="btn btn-glow">Book a Table</a>
             </div>
         </section>
 
-        <section id="services" class="services">
+        <!-- About Section with Counters -->
+        <section id="about" class="about">
             <div class="container">
-                <h2 class="section-title">Our Menu</h2>
+                <div class="about-grid">
+                    <div class="about-text reveal">
+                        <h2 class="section-title">Our Story</h2>
+                        <p id="about-text">Description goes here.</p>
+                    </div>
+                    <div class="counters reveal">
+                        <div class="counter-item">
+                            <span class="counter" id="count-years" data-target="0">0</span>
+                            <p>Years of Excellence</p>
+                        </div>
+                        <div class="counter-item">
+                            <span class="counter" id="count-dishes" data-target="0">0</span>
+                            <p>Signature Dishes</p>
+                        </div>
+                        <div class="counter-item">
+                            <span class="counter" id="count-guests" data-target="0">0</span>
+                            <p>Happy Guests</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="menu">
+            <div class="container">
+                <h2 class="section-title reveal">Exquisite Menu</h2>
                 <div id="services-list" class="grid-container">
                     <!-- Menu items injected by JS -->
                 </div>
             </div>
         </section>
 
-        <section id="about" class="about">
+        <!-- Reservations & Contact -->
+        <section id="reservations" class="reservations">
             <div class="container">
-                <h2 class="section-title">Our Story</h2>
-                <p id="about-text">About us description goes here.</p>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2 class="section-title">Contact Us</h2>
+                <h2 class="section-title reveal">Make a Reservation</h2>
                 <div class="contact-grid">
-                    <div class="contact-info">
+                    <div class="contact-info reveal">
                         <h3>Visit Us</h3>
                         <p id="contact-address">Address</p>
                         <p id="contact-phone">Phone</p>
                         <p id="contact-email">Email</p>
-                    </div>
-                    <form id="contact-form" class="contact-form">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="Your Message or Reservation Details" rows="5" required></textarea>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
 
-        <section id="maps" class="maps">
-            <div class="container">
-                <h2 class="section-title">Location</h2>
-                <div id="map-container" class="map-container">
-                    <!-- Map iframe injected by JS -->
+                        <div id="map-container" class="map-container mt-4">
+                            <!-- Map iframe injected by JS -->
+                        </div>
+                    </div>
+                    <div class="form-wrapper reveal">
+                        <form id="contact-form" class="contact-form">
+                            <input type="text" placeholder="Full Name" required>
+                            <input type="email" placeholder="Email Address" required>
+                            <input type="tel" placeholder="Phone Number" required>
+                            <div class="datetime-group">
+                                <input type="date" required>
+                                <input type="time" required>
+                            </div>
+                            <input type="number" placeholder="Number of Guests" min="1" max="20" required>
+                            <textarea placeholder="Special Requests (Allergies, Occasion, etc.)" rows="4"></textarea>
+                            <button type="submit" class="btn btn-glow">Confirm Reservation</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer id="footer">
-        <div class="container">
-            <p>&copy; <span id="current-year"></span> <span id="footer-brand">Business Name</span>. All rights reserved.</p>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h2 id="footer-brand-name">Brand</h2>
+                <p>Elevating culinary experiences since 2010.</p>
+            </div>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg></a>
+                <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.05c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> <span id="footer-copy-brand">Brand</span>. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Back to Top Button with Progress -->
+    <div id="back-to-top" class="back-to-top">
+        <svg viewBox="0 0 24 24" class="progress-circle">
+            <circle class="bg" cx="12" cy="12" r="10"></circle>
+            <circle class="progress" id="scroll-progress" cx="12" cy="12" r="10"></circle>
+        </svg>
+        <span class="arrow">↑</span>
+    </div>
+
     <!-- WhatsApp Floating Button -->
-    <a id="whatsapp-btn" href="#" target="_blank" class="whatsapp-btn">
+    <a id="whatsapp-btn" href="#" target="_blank" class="whatsapp-btn pulse">
         <svg viewBox="0 0 32 32" width="32" height="32">
             <path fill="white" d="M16 2.016C8.262 2.016 1.984 8.293 1.984 16.031c0 2.455.632 4.846 1.834 6.953L2 30.016l7.184-1.883c2.062 1.096 4.387 1.674 6.816 1.674 7.738 0 14.016-6.277 14.016-14.015S23.738 2.016 16 2.016zm0 23.473c-2.074 0-4.105-.558-5.882-1.613l-.422-.25-4.373 1.147 1.168-4.263-.274-.436c-1.16-1.848-1.772-3.98-1.772-6.189 0-6.402 5.207-11.609 11.61-11.609 6.401 0 11.608 5.207 11.608 11.61s-5.207 11.603-11.663 11.603zM22.38 18.7c-.349-.174-2.066-1.02-2.386-1.137-.32-.116-.554-.174-.788.174-.233.349-.9 1.137-1.102 1.37-.204.233-.408.262-.757.087-1.428-.705-2.585-1.522-3.565-2.735-.257-.318.252-.296.936-1.661.116-.233.058-.437-.03-.611-.087-.174-.788-1.9-1.079-2.602-.284-.683-.574-.59-.788-.6-.204-.01-.437-.01-.67-.01-.233 0-.612.087-.932.436-.32.349-1.223 1.194-1.223 2.91 0 1.716 1.252 3.374 1.427 3.606.175.233 2.454 3.743 5.942 5.247 2.308.995 3.238.835 4.103.746 1.002-.104 2.066-.844 2.357-1.66.291-.816.291-1.514.204-1.66-.087-.146-.32-.233-.67-.408z"/>
         </svg>

@@ -1,80 +1,188 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Apply Theme Colors
+    // 1. Initialize Theme & Config Data
     const root = document.documentElement;
     root.style.setProperty('--primary-color', config.colors.primary);
     root.style.setProperty('--secondary-color', config.colors.secondary);
     root.style.setProperty('--bg-color', config.colors.background);
     root.style.setProperty('--text-color', config.colors.text);
+    if(config.colors.surface) root.style.setProperty('--surface-color', config.colors.surface);
 
-    // 2. Populate Basic Info
     document.title = `${config.businessName} - Restaurant`;
+    document.getElementById('footer-brand-name').textContent = config.businessName;
+    document.getElementById('footer-copy-brand').textContent = config.businessName;
+    document.getElementById('hero-subtitle').textContent = config.heroSubtitle;
+    document.getElementById('about-text').textContent = config.aboutText;
 
     const brandLogo = document.getElementById('brand-logo');
     if (config.logo) {
         brandLogo.src = config.logo;
         brandLogo.style.display = 'inline-block';
-        document.getElementById('brand-name').style.display = 'none'; // Optional: hide text if logo exists
+        document.getElementById('brand-name').style.display = 'none';
     } else {
         document.getElementById('brand-name').textContent = config.businessName;
     }
-    document.getElementById('footer-brand').textContent = config.businessName;
-    document.getElementById('hero-title').textContent = config.heroTitle;
-    document.getElementById('hero-subtitle').textContent = config.heroSubtitle;
-    document.getElementById('about-text').textContent = config.aboutText;
 
-    // Set current year in footer
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // 3. Populate Contact Info
     document.getElementById('contact-address').innerHTML = `📍 ${config.contact.address}`;
     document.getElementById('contact-phone').innerHTML = `📞 ${config.contact.phone}`;
     document.getElementById('contact-email').innerHTML = `✉️ ${config.contact.email}`;
 
-    // 4. Set WhatsApp Link
     const whatsappBtn = document.getElementById('whatsapp-btn');
     const message = encodeURIComponent(`Hello ${config.businessName}, I would like to make a reservation.`);
     whatsappBtn.href = `https://wa.me/${config.contact.whatsappNumber}?text=${message}`;
 
-    // 5. Populate Menu/Services
+    // Populate Counters
+    document.getElementById('count-years').setAttribute('data-target', config.counters.yearsExperience);
+    document.getElementById('count-dishes').setAttribute('data-target', config.counters.dishesCreated);
+    document.getElementById('count-guests').setAttribute('data-target', config.counters.happyGuests);
+
+    // Populate Menu Grid
     const servicesList = document.getElementById('services-list');
-    config.services.forEach(item => {
+    config.services.forEach((item, index) => {
         const itemCard = document.createElement('div');
-        itemCard.className = 'service-card';
+        itemCard.className = 'card reveal';
+        itemCard.style.transitionDelay = `${index * 0.1}s`;
         itemCard.innerHTML = `
-            <h3>${item.name}</h3>
-            <p>${item.description}</p>
-            <p class="service-price">${item.price}</p>
+            <div style="overflow:hidden;"><img src="${item.image}" alt="${item.name}" class="card-img" loading="lazy"></div>
+            <div class="card-content">
+                <h3>${item.name}</h3>
+                <p>${item.description}</p>
+                <div class="card-price">${item.price}</div>
+            </div>
         `;
         servicesList.appendChild(itemCard);
     });
 
-    // 6. Embed Google Map
+    // Map
     const mapContainer = document.getElementById('map-container');
     if (config.contact.mapUrl) {
-        mapContainer.innerHTML = `
-            <iframe
-                src="${config.contact.mapUrl}"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        `;
-    } else {
-        mapContainer.innerHTML = '<p>Map not available.</p>';
+        mapContainer.innerHTML = `<iframe src="${config.contact.mapUrl}" allowfullscreen="" loading="lazy"></iframe>`;
     }
 
-    // Smooth scrolling for navigation links
+    // 2. Page Loader Removal
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+
+        // Trigger typewriter after load
+        typeWriter();
+    });
+
+    // 3. Typewriter Effect
+    const typeWriterElement = document.getElementById('typewriter');
+    const text = config.businessName;
+    let i = 0;
+    function typeWriter() {
+        if (i < text.length) {
+            typeWriterElement.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 150);
+        }
+    }
+
+    // 4. Navbar Glassmorphism on Scroll & Back to Top Progress
+    const header = document.getElementById('header');
+    const backToTop = document.getElementById('back-to-top');
+    const progressCircle = document.getElementById('scroll-progress');
+    const circumference = 2 * Math.PI * 10; // r=10
+
+    window.addEventListener('scroll', () => {
+        // Navbar
+        if (window.scrollY > 50) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+
+        // Back to Top Visibility & Progress
+        let scrollPos = window.scrollY;
+        let docHeight = document.body.scrollHeight - window.innerHeight;
+        let scrollPercent = scrollPos / docHeight;
+
+        if (scrollPos > 300) backToTop.classList.add('visible');
+        else backToTop.classList.remove('visible');
+
+        progressCircle.style.strokeDashoffset = circumference - (scrollPercent * circumference);
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 5. Mobile Hamburger Menu
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if(targetId === '#') return;
             const targetElement = document.querySelector(targetId);
-            if(targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
+            if(targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
         });
     });
+
+    // 6. Scroll Reveal & Counter Animation via IntersectionObserver
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    let countersStarted = false;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+
+                // Trigger counters if they are visible
+                if (entry.target.classList.contains('counters') && !countersStarted) {
+                    countersStarted = true;
+                    startCounters();
+                }
+
+                // Optional: unobserve if you only want it to reveal once
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+        observer.observe(el);
+    });
+
+    function startCounters() {
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        counters.forEach(counter => {
+            const animate = () => {
+                const value = +counter.getAttribute('data-target');
+                const data = +counter.innerText;
+                const time = value / speed;
+
+                if (data < value) {
+                    counter.innerText = Math.ceil(data + time);
+                    setTimeout(animate, 10);
+                } else {
+                    counter.innerText = value;
+                }
+            }
+            animate();
+        });
+    }
 });

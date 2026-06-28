@@ -7,83 +7,170 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Page Loader -->
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navbar -->
     <header id="header">
         <div class="container nav-container">
-            <div class="brand"><img id="brand-logo" src="" alt="Logo" style="display:none; max-height: 50px; margin-right: 10px;"><h1 id="brand-name">Business Name</h1></div>
-            <nav>
+            <div class="brand">
+                <img id="brand-logo" src="" alt="Logo" style="display:none; max-height: 40px; margin-right: 15px;">
+                <h1 id="brand-name">Brand</h1>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="#hero">Home</a></li>
-                    <li><a href="#services">Services</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#before-after">Transformations</a></li>
+                    <li><a href="#booking">Book Now</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- Hero Section (Split Layout) -->
         <section id="hero" class="hero">
-            <div class="container hero-content">
-                <h2 id="hero-title">Welcome to our Salon</h2>
-                <p id="hero-subtitle">Experience the best beauty services.</p>
-                <a href="#contact" class="btn">Book Now</a>
+            <div class="hero-bg-anim"></div>
+            <div class="container hero-container">
+                <div class="hero-text reveal">
+                    <h2 id="hero-title" class="typewriter-container"><span id="typewriter"></span><span class="cursor">|</span></h2>
+                    <p id="hero-subtitle">Discover Your True Radiance.</p>
+                    <a href="#booking" class="btn btn-glow">Book an Appointment</a>
+                </div>
+                <div class="hero-image reveal">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salon Experience">
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- About Section & Counters -->
+        <section id="about" class="about">
+            <div class="container text-center reveal">
+                <h2 class="section-title">Our Sanctuary</h2>
+                <p id="about-text" class="about-desc">Description goes here.</p>
+
+                <div class="counters mt-5">
+                    <div class="counter-item">
+                        <span class="counter" id="count-years" data-target="0">0</span>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter" id="count-services" data-target="0">0</span>
+                        <p>Specialized Services</p>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter" id="count-clients" data-target="0">0</span>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services (Icon Cards with Shimmer) -->
         <section id="services" class="services">
             <div class="container">
-                <h2 class="section-title">Our Services</h2>
+                <h2 class="section-title reveal text-center">Our Services</h2>
                 <div id="services-list" class="grid-container">
                     <!-- Services injected by JS -->
                 </div>
             </div>
         </section>
 
-        <section id="about" class="about">
+        <!-- Before / After Concept -->
+        <section id="before-after" class="before-after">
             <div class="container">
-                <h2 class="section-title">About Us</h2>
-                <p id="about-text">About us description goes here.</p>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2 class="section-title">Contact Us</h2>
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>Get in touch</h3>
-                        <p id="contact-address">Address</p>
-                        <p id="contact-phone">Phone</p>
-                        <p id="contact-email">Email</p>
+                <h2 class="section-title reveal text-center">Transformations</h2>
+                <div class="ba-grid reveal">
+                    <div class="ba-card">
+                        <img src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Before">
+                        <div class="label">Before</div>
                     </div>
-                    <form id="contact-form" class="contact-form">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+                    <div class="ba-card">
+                        <img src="https://images.unsplash.com/photo-1595476108010-b4d1f10d5e43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="After">
+                        <div class="label">After</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="maps" class="maps">
+        <!-- Booking & Contact -->
+        <section id="booking" class="booking">
             <div class="container">
-                <h2 class="section-title">Find Us</h2>
-                <div id="map-container" class="map-container">
-                    <!-- Map iframe injected by JS -->
+                <h2 class="section-title reveal text-center">Book Your Visit</h2>
+                <div class="contact-grid">
+                    <div class="form-wrapper reveal">
+                        <form id="contact-form" class="contact-form">
+                            <input type="text" placeholder="Full Name" required>
+                            <input type="email" placeholder="Email Address" required>
+                            <input type="tel" placeholder="Phone Number" required>
+                            <select required>
+                                <option value="" disabled selected>Select a Service</option>
+                                <option value="hair">Hair Styling</option>
+                                <option value="color">Coloring</option>
+                                <option value="spa">Facial & Spa</option>
+                                <option value="nails">Nails</option>
+                            </select>
+                            <div class="datetime-group">
+                                <input type="date" required>
+                                <input type="time" required>
+                            </div>
+                            <button type="submit" class="btn btn-glow">Request Appointment</button>
+                        </form>
+                    </div>
+                    <div class="contact-info reveal">
+                        <div class="info-card">
+                            <h3>Location & Info</h3>
+                            <p id="contact-address">Address</p>
+                            <p id="contact-phone">Phone</p>
+                            <p id="contact-email">Email</p>
+                        </div>
+                        <div id="map-container" class="map-container mt-4">
+                            <!-- Map iframe injected by JS -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer id="footer">
-        <div class="container">
-            <p>&copy; <span id="current-year"></span> <span id="footer-brand">Business Name</span>. All rights reserved.</p>
+        <div class="container footer-content text-center">
+            <h2 id="footer-brand-name" style="color: var(--primary-color);">Brand</h2>
+            <div class="social-links mt-4 mb-4">
+                <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg></a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> <span id="footer-copy-brand">Brand</span>. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <div id="back-to-top" class="back-to-top">
+        <svg viewBox="0 0 24 24" class="progress-circle">
+            <circle class="bg" cx="12" cy="12" r="10"></circle>
+            <circle class="progress" id="scroll-progress" cx="12" cy="12" r="10"></circle>
+        </svg>
+        <span class="arrow">↑</span>
+    </div>
+
     <!-- WhatsApp Floating Button -->
-    <a id="whatsapp-btn" href="#" target="_blank" class="whatsapp-btn">
+    <a id="whatsapp-btn" href="#" target="_blank" class="whatsapp-btn pulse">
         <svg viewBox="0 0 32 32" width="32" height="32">
             <path fill="white" d="M16 2.016C8.262 2.016 1.984 8.293 1.984 16.031c0 2.455.632 4.846 1.834 6.953L2 30.016l7.184-1.883c2.062 1.096 4.387 1.674 6.816 1.674 7.738 0 14.016-6.277 14.016-14.015S23.738 2.016 16 2.016zm0 23.473c-2.074 0-4.105-.558-5.882-1.613l-.422-.25-4.373 1.147 1.168-4.263-.274-.436c-1.16-1.848-1.772-3.98-1.772-6.189 0-6.402 5.207-11.609 11.61-11.609 6.401 0 11.608 5.207 11.608 11.61s-5.207 11.603-11.663 11.603zM22.38 18.7c-.349-.174-2.066-1.02-2.386-1.137-.32-.116-.554-.174-.788.174-.233.349-.9 1.137-1.102 1.37-.204.233-.408.262-.757.087-1.428-.705-2.585-1.522-3.565-2.735-.257-.318.252-.296.936-1.661.116-.233.058-.437-.03-.611-.087-.174-.788-1.9-1.079-2.602-.284-.683-.574-.59-.788-.6-.204-.01-.437-.01-.67-.01-.233 0-.612.087-.932.436-.32.349-1.223 1.194-1.223 2.91 0 1.716 1.252 3.374 1.427 3.606.175.233 2.454 3.743 5.942 5.247 2.308.995 3.238.835 4.103.746 1.002-.104 2.066-.844 2.357-1.66.291-.816.291-1.514.204-1.66-.087-.146-.32-.233-.67-.408z"/>
         </svg>

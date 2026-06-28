@@ -7,83 +7,157 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Page Loader -->
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navbar -->
     <header id="header">
         <div class="container nav-container">
-            <div class="brand"><img id="brand-logo" src="" alt="Logo" style="display:none; max-height: 50px; margin-right: 10px;"><h1 id="brand-name">Business Name</h1></div>
-            <nav>
+            <div class="brand">
+                <img id="brand-logo" src="" alt="Logo" style="display:none; max-height: 40px; margin-right: 15px;">
+                <h1 id="brand-name">Brand</h1>
+            </div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="#hero">Home</a></li>
-                    <li><a href="#services">Products</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+
+            <div class="cart-icon" title="View Cart">
+                <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M17 18a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2M1 2h3.27l.94 2H20a1 1 0 0 1 1 1c0 .17-.05.34-.12.5l-3.58 6.47c-.34.61-1 1.03-1.75 1.03H8.1l-.9 1.63-.03.12a.25.25 0 0 0 .25.25H19v2H7a2 2 0 0 1-2-2c0-.35.09-.68.24-.96l1.36-2.45L3 4H1V2m6 16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2m9-7l2.78-5H6.14l2.36 5H16z"/></svg>
+                <span class="cart-count">0</span>
+            </div>
         </div>
     </header>
 
     <main>
+        <!-- Hero Section (Bold Product Showcase) -->
         <section id="hero" class="hero">
-            <div class="container hero-content">
-                <h2 id="hero-title">Welcome to our Shop</h2>
-                <p id="hero-subtitle">Discover amazing products today.</p>
-                <a href="#services" class="btn">Shop Now</a>
+            <div class="hero-bg-anim"></div>
+            <div class="container hero-container reveal">
+                <h2 id="hero-title" class="typewriter-container"><span id="typewriter"></span><span class="cursor">|</span></h2>
+                <p id="hero-subtitle">The Future is Now.</p>
+                <a href="#products" class="btn btn-glow">Shop Collection</a>
             </div>
         </section>
 
-        <section id="services" class="services">
+        <!-- Featured Banner -->
+        <section class="featured-banner">
+            <div class="container reveal">
+                <div class="banner-content">
+                    <h2>Next-Gen Series X</h2>
+                    <p>Pre-order the ultimate tech experience today.</p>
+                    <a href="#products" class="btn btn-outline">Explore More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Counters -->
+        <section id="about" class="about">
+            <div class="container text-center reveal">
+                <h2 class="section-title">Our Vision</h2>
+                <p id="about-text" class="about-desc">Description goes here.</p>
+
+                <div class="counters mt-5">
+                    <div class="counter-item">
+                        <span class="counter" id="count-years" data-target="0">0</span>
+                        <p>Years Innovating</p>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter" id="count-products" data-target="0">0</span>
+                        <p>Products Shipped</p>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter" id="count-stores" data-target="0">0</span>
+                        <p>Global Stores</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products (3x3 Grid with Flip Cards) -->
+        <section id="products" class="products">
             <div class="container">
-                <h2 class="section-title">Featured Products</h2>
+                <h2 class="section-title reveal text-center">New Arrivals</h2>
                 <div id="services-list" class="grid-container">
                     <!-- Products injected by JS -->
                 </div>
             </div>
         </section>
 
-        <section id="about" class="about">
-            <div class="container">
-                <h2 class="section-title">About Us</h2>
-                <p id="about-text">About us description goes here.</p>
-            </div>
-        </section>
-
+        <!-- Contact -->
         <section id="contact" class="contact">
             <div class="container">
-                <h2 class="section-title">Contact Us</h2>
+                <h2 class="section-title reveal text-center">Support & Contact</h2>
                 <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>Customer Service</h3>
-                        <p id="contact-address">Address</p>
-                        <p id="contact-phone">Phone</p>
-                        <p id="contact-email">Email</p>
+                    <div class="form-wrapper reveal">
+                        <form id="contact-form" class="contact-form">
+                            <input type="text" placeholder="Full Name" required>
+                            <input type="email" placeholder="Email Address" required>
+                            <select required>
+                                <option value="" disabled selected>Inquiry Type</option>
+                                <option value="support">Technical Support</option>
+                                <option value="sales">Sales & Pre-order</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <textarea placeholder="How can we help you?" rows="5" required></textarea>
+                            <button type="submit" class="btn btn-glow">Send Message</button>
+                        </form>
                     </div>
-                    <form id="contact-form" class="contact-form">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="How can we help you?" rows="5" required></textarea>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <section id="maps" class="maps">
-            <div class="container">
-                <h2 class="section-title">Store Location</h2>
-                <div id="map-container" class="map-container">
-                    <!-- Map iframe injected by JS -->
+                    <div class="contact-info reveal">
+                        <div class="info-card">
+                            <h3>Headquarters</h3>
+                            <p id="contact-address">Address</p>
+                            <p id="contact-phone">Phone</p>
+                            <p id="contact-email">Email</p>
+                        </div>
+                        <div id="map-container" class="map-container mt-4">
+                            <!-- Map iframe injected by JS -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer id="footer">
-        <div class="container">
-            <p>&copy; <span id="current-year"></span> <span id="footer-brand">Business Name</span>. All rights reserved.</p>
+        <div class="container footer-content text-center">
+            <h2 id="footer-brand-name" style="color: var(--primary-color);">Brand</h2>
+            <div class="social-links mt-4 mb-4">
+                <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/></svg></a>
+                <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.05c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.16-3.8c-1.08 0-1.8.57-2.12 1.15V9.6h-2.76v8.9h2.76v-4.9c0-1.31.25-2.58 1.88-2.58 1.6 0 1.63 1.5 1.63 2.67v4.81h2.77M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.9H5.5v8.9h2.77z"/></svg></a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> <span id="footer-copy-brand">Brand</span>. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <div id="back-to-top" class="back-to-top">
+        <svg viewBox="0 0 24 24" class="progress-circle">
+            <circle class="bg" cx="12" cy="12" r="10"></circle>
+            <circle class="progress" id="scroll-progress" cx="12" cy="12" r="10"></circle>
+        </svg>
+        <span class="arrow">↑</span>
+    </div>
+
     <!-- WhatsApp Floating Button -->
-    <a id="whatsapp-btn" href="#" target="_blank" class="whatsapp-btn">
+    <a id="whatsapp-btn" href="#" target="_blank" class="whatsapp-btn pulse">
         <svg viewBox="0 0 32 32" width="32" height="32">
             <path fill="white" d="M16 2.016C8.262 2.016 1.984 8.293 1.984 16.031c0 2.455.632 4.846 1.834 6.953L2 30.016l7.184-1.883c2.062 1.096 4.387 1.674 6.816 1.674 7.738 0 14.016-6.277 14.016-14.015S23.738 2.016 16 2.016zm0 23.473c-2.074 0-4.105-.558-5.882-1.613l-.422-.25-4.373 1.147 1.168-4.263-.274-.436c-1.16-1.848-1.772-3.98-1.772-6.189 0-6.402 5.207-11.609 11.61-11.609 6.401 0 11.608 5.207 11.608 11.61s-5.207 11.603-11.663 11.603zM22.38 18.7c-.349-.174-2.066-1.02-2.386-1.137-.32-.116-.554-.174-.788.174-.233.349-.9 1.137-1.102 1.37-.204.233-.408.262-.757.087-1.428-.705-2.585-1.522-3.565-2.735-.257-.318.252-.296.936-1.661.116-.233.058-.437-.03-.611-.087-.174-.788-1.9-1.079-2.602-.284-.683-.574-.59-.788-.6-.204-.01-.437-.01-.67-.01-.233 0-.612.087-.932.436-.32.349-1.223 1.194-1.223 2.91 0 1.716 1.252 3.374 1.427 3.606.175.233 2.454 3.743 5.942 5.247 2.308.995 3.238.835 4.103.746 1.002-.104 2.066-.844 2.357-1.66.291-.816.291-1.514.204-1.66-.087-.146-.32-.233-.67-.408z"/>
         </svg>

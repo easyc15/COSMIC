@@ -1,61 +1,68 @@
-// Configuration for Shop Template
 const config = {
-    // Business Details
-    businessName: "Cosmic Retail",
-    logo: "", // URL to logo image, leave empty for text only
-    heroTitle: "Premium Goods for Everyday Life",
-    heroSubtitle: "Shop our curated collection of high-quality lifestyle products, apparel, and home goods.",
-    aboutText: "Founded with a passion for quality and design, Cosmic Retail offers a carefully curated selection of products that elevate your everyday life. From sustainable apparel to modern home decor, we source only the best items from ethical manufacturers around the world. Our mission is to bring you functional, beautiful, and long-lasting goods.",
+    businessName: "Nexus Tech",
+    logo: "",
+    heroSubtitle: "The Future is Now.",
+    aboutText: "Welcome to Nexus Tech. We curate the most advanced, sleek, and innovative gadgets designed to seamlessly integrate into your modern lifestyle. Experience high-end technology with uncompromising aesthetics.",
 
-    // Theme Colors (Blue theme)
+    // Theme Colors (Modern blue/dark)
     colors: {
-        primary: "#3498db",
-        secondary: "#2980b9",
-        background: "#f4f7f6",
-        text: "#333333"
+        primary: "#00d4ff", // Electric Blue
+        secondary: "#007acc",
+        background: "#0d1117", // Very dark blue/grey
+        text: "#ffffff",
+        surface: "#161b22"
     },
 
-    // Contact & Location
     contact: {
-        phone: "+1 (555) 321-7654",
-        email: "support@cosmicretail.com",
-        address: "789 Market Street, Commerce City, CA 90210",
-        whatsappNumber: "15553217654", // Numbers only, with country code
-        // Google Maps Embed URL
+        phone: "+1 (555) 333-4444",
+        email: "support@nexustech.com",
+        address: "101 Silicon Way, Tech City, CA 94016",
+        whatsappNumber: "15553334444",
         mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215447171485!2d-73.98509668459416!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1655160136611!5m2!1sen!2sus"
     },
 
-    // Services / Products
+    counters: {
+        yearsExperience: 5,
+        productsSold: 150000,
+        globalStores: 24
+    },
+
     services: [
         {
-            name: "Classic Cotton Tee",
-            description: "100% organic cotton, breathable and ethically made.",
-            price: "$25.00"
+            name: "Quantum Earbuds X",
+            description: "Active noise cancellation with 40-hour battery life.",
+            price: "$199",
+            image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
         },
         {
-            name: "Leather Minimalist Wallet",
-            description: "Slim profile genuine leather wallet with RFID blocking.",
-            price: "$45.00"
+            name: "Aero Drone 4K",
+            description: "Ultra-lightweight drone with obstacle avoidance.",
+            price: "$899",
+            image: "https://images.unsplash.com/photo-1507582020474-9a35b7d455d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
         },
         {
-            name: "Ceramic Coffee Mug",
-            description: "Handcrafted 12oz ceramic mug, perfect for your morning brew.",
-            price: "$18.00"
+            name: "Neon Mechanical Keyboard",
+            description: "Wireless mechanical keyboard with custom RGB.",
+            price: "$149",
+            image: "https://images.unsplash.com/photo-1595225476474-87563907a212?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
         },
         {
-            name: "Canvas Tote Bag",
-            description: "Durable heavyweight canvas tote for groceries or daily use.",
-            price: "$22.00"
+            name: "Titanium Smartwatch",
+            description: "ECG monitoring, GPS, and aerospace-grade titanium.",
+            price: "$349",
+            image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
         },
         {
-            name: "Soy Wax Candle",
-            description: "Hand-poured candle with soothing lavender and vanilla scent.",
-            price: "$30.00"
+            name: "VR Vision Pro",
+            description: "Immersive standalone VR headset with 8K resolution.",
+            price: "$499",
+            image: "https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
         },
         {
-            name: "Stainless Steel Bottle",
-            description: "Insulated water bottle that keeps drinks cold for 24 hours.",
-            price: "$35.00"
+            name: "Stealth Gaming Mouse",
+            description: "Ultralight ambidextrous mouse with 25K DPI sensor.",
+            price: "$129",
+            image: "https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
         }
     ]
 };

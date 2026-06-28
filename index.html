@@ -3,91 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COSMIC Sites - Admin Dashboard</title>
+    <title>COSMIC Sites - Premium Dashboard</title>
     <style>
         :root {
-            --primary: #333;
-            --bg: #f8f9fa;
+            --bg-color: #050505;
+            --text-color: #f0f0f0;
+            --accent-salon: #b339eb;
+            --accent-restaurant: #d4af37;
+            --accent-shop: #00d4ff;
         }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: var(--bg);
-            color: var(--primary);
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, transparent 70%);
+        }
+
         header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 2rem;
+            width: 100%;
+            padding: 4rem 2rem;
             text-align: center;
         }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
+            max-width: 1200px;
+            width: 100%;
             padding: 2rem;
         }
+
         .templates {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            perspective: 1000px;
         }
+
         .card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2.5rem;
             text-align: center;
-            transition: transform 0.2s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            animation: zoomIn 0.8s ease-out backwards;
         }
+
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+        }
+
+        .theme-salon::before { background: var(--accent-salon); }
+        .theme-restaurant::before { background: var(--accent-restaurant); }
+        .theme-shop::before { background: var(--accent-shop); }
+
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) rotateX(5deg);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
+
+        .theme-salon:hover { box-shadow: 0 20px 40px rgba(179, 57, 235, 0.15); }
+        .theme-restaurant:hover { box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15); }
+        .theme-shop:hover { box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15); }
+
         .card h2 {
-            margin-top: 0;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
+
+        .theme-salon h2 { color: var(--accent-salon); }
+        .theme-restaurant h2 { color: var(--accent-restaurant); }
+        .theme-shop h2 { color: var(--accent-shop); }
+
+        .card p {
+            color: #999;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
         .btn {
             display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 2rem;
             text-decoration: none;
-            border-radius: 4px;
-            margin-top: 1rem;
-            font-weight: bold;
-            transition: background-color 0.2s;
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-        .btn:hover {
-            background-color: #2980b9;
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            transition: all 0.3s ease;
         }
-        .theme-salon { border-top: 5px solid #9b59b6; }
-        .theme-restaurant { border-top: 5px solid #e74c3c; }
-        .theme-shop { border-top: 5px solid #3498db; }
+
+        .btn-salon { border: 1px solid var(--accent-salon); color: var(--accent-salon); }
+        .btn-salon:hover { background: var(--accent-salon); color: white; box-shadow: 0 0 20px rgba(179, 57, 235, 0.4); }
+
+        .btn-restaurant { border: 1px solid var(--accent-restaurant); color: var(--accent-restaurant); }
+        .btn-restaurant:hover { background: var(--accent-restaurant); color: #000; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+
+        .btn-shop { border: 1px solid var(--accent-shop); color: var(--accent-shop); }
+        .btn-shop:hover { background: var(--accent-shop); color: #000; box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Ambient background animated blobs */
+        .blob {
+            position: fixed;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.5;
+            animation: float 20s infinite alternate ease-in-out;
+        }
+        .blob-1 { top: -10%; left: -10%; width: 40vw; height: 40vw; background: rgba(179, 57, 235, 0.1); }
+        .blob-2 { bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: rgba(0, 212, 255, 0.05); animation-delay: -10s; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(10%, 10%) scale(1.2); }
+        }
     </style>
 </head>
 <body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
     <header>
         <h1>COSMIC Sites</h1>
-        <p>Admin Dashboard - Live Preview</p>
+        <p class="subtitle">Premium Multi-Template Architecture</p>
     </header>
+
     <div class="container">
-        <p style="text-align: center; font-size: 1.2rem;">Choose a template below to view the live preview.</p>
         <div class="templates">
             <div class="card theme-salon">
-                <h2>Salon / Beauty</h2>
-                <p>A beautiful, relaxing purple-themed template for salons, spas, and beauty services.</p>
-                <a href="salon/index.html" class="btn" style="background-color: #9b59b6;">Preview Salon</a>
+                <h2>Salon & Spa</h2>
+                <p>Elegant dark purple theme. Features split hero layout, animated shimmer cards, and before/after concepts for premium beauty services.</p>
+                <a href="salon/index.html" class="btn btn-salon">Preview Salon</a>
             </div>
+
             <div class="card theme-restaurant">
-                <h2>Restaurant / Food</h2>
-                <p>A warm, appetizing red-themed template perfect for restaurants, cafes, and food businesses.</p>
-                <a href="restaurant/index.html" class="btn" style="background-color: #e74c3c;">Preview Restaurant</a>
+                <h2>Fine Dining</h2>
+                <p>Deep dark luxury theme with gold accents. Features parallax food backgrounds, elegant menu grids, and an immersive culinary experience.</p>
+                <a href="restaurant/index.html" class="btn btn-restaurant">Preview Restaurant</a>
             </div>
+
             <div class="card theme-shop">
-                <h2>General Shop / Retail</h2>
-                <p>A professional, clean blue-themed template for retail stores and general product sales.</p>
-                <a href="shop/index.html" class="btn" style="background-color: #3498db;">Preview Shop</a>
+                <h2>Modern Retail</h2>
+                <p>High-contrast dark theme with electric blue. Features bold product showcases, 3D flip cards, and an aggressive, modern tech-shop aesthetic.</p>
+                <a href="shop/index.html" class="btn btn-shop">Preview Shop</a>
             </div>
         </div>
     </div>
